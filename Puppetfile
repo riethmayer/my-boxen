@@ -33,6 +33,6 @@ github "sudo",     "1.0.0"
 github "emacs",    "1.1.0"
 github "tmux",     "1.0.2"
 github "iterm2",   "1.0.2"
-
+github "erlang",   "1.0.1"
 # Optional/custom modules. There are tons available at
 # https://github.com/boxen.
