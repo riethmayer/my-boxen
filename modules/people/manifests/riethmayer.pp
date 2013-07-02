@@ -28,12 +28,39 @@ class people::riethmayer {
     require => File[$my]
   }
 
+  file { "${home}/.bashrc":
+       ensure => 'link',
+       target => "${dotfiles}/bashrc",
+  }
+
+  file { "${home}/.gitconfig":
+       ensure => 'link',
+       target => "${dotfiles}/gitconfig",
+  }
+
+  file { "${home}/bin":
+       ensure => 'link',
+       target => "${dotfiles}/bin",
+  }
+
+  repository { "${home}/.emacs.d":
+    source  => 'riethmayer/emacs'
+  }
+
+  repository { "${home}/bonusbox":
+    source => 'bonusboxme/workstation'
+  }
+
+  host { 'fb.bonusbox.dev':
+    ip => '192.168.88.2'
+  }
+
   include vagrant
   vagrant::plugin { 'omnibus': }
   vagrant::plugin { 'librarian-chef': }
   
   include postgresql
   # to create a db:
-  # postgresql::db { 'mydb': } 
+  # postgresql::db { 'mydb': }
 
 }
