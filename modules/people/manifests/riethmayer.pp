@@ -32,6 +32,16 @@ class people::riethmayer {
        target => "${dotfiles}/gitconfig",
   }
 
+  file { "${home}/.tmux.conf":
+       ensure => 'link',
+       target => "${dotfiles}/tmux.conf",
+  }
+
+  file { "${home}/.profile":
+       ensure => 'link',
+       target => "${dotfiles}/bashrc",
+  }
+
   file { "${home}/bin":
        ensure => 'link',
        target => "${dotfiles}/bin",
