@@ -18,7 +18,6 @@ class people::riethmayer {
   include propane
   include skype
 
-  
   $home     = "/Users/${::luser}"
   $my       = "${home}/src"
   $dotfiles = "${my}/dotfiles"
@@ -26,11 +25,6 @@ class people::riethmayer {
   repository { $dotfiles:
     source  => 'riethmayer/dotfiles',
     require => File[$my]
-  }
-
-  file { "${home}/.bashrc":
-       ensure => 'link',
-       target => "${dotfiles}/bashrc",
   }
 
   file { "${home}/.gitconfig":
@@ -58,7 +52,7 @@ class people::riethmayer {
   include vagrant
   vagrant::plugin { 'omnibus': }
   vagrant::plugin { 'librarian-chef': }
-  
+
   include postgresql
   # to create a db:
   # postgresql::db { 'mydb': }
